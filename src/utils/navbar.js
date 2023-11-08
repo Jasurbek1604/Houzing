@@ -1,5 +1,6 @@
 import HomePage from "../pages/Home";
 import PropertiesPage from "../pages/Properties";
+
 export const navbar = [
   {
     id: 1,
