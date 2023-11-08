@@ -31,6 +31,8 @@ export const Wrapper = styled.div`
 export const Section = styled.div`
   display: flex;
   align-items: center;
+  justify-content: ${({ right }) => right && "flex-end"};
+  width: ${({ left, right }) => (left || right) && "150px"};
   cursor: ${({ logo }) => logo && "pointer"};
   .active {
     color: #b8ff06;
@@ -49,4 +51,15 @@ export const Link = styled(NavLink)`
   text-decoration: none;
   color: #fff;
   padding: 0 30px;
+`;
+
+export const Button = styled.button`
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  cursor: pointer;
+  background: var(--background);
 `;

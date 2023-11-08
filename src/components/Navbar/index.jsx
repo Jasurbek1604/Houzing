@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, Outlet } from "react-router-dom";
 import { navbar } from "../../utils/navbar";
-import { Container, Wrapper, Section, Logo, Link, Main } from "./style";
+import { Container, Wrapper, Section, Logo, Link, Main, Button } from "./style";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -9,7 +9,7 @@ const Navbar = () => {
     <Container>
       <Main>
         <Wrapper>
-          <Section logo onClick={() => navigate("/home")}>
+          <Section left logo onClick={() => navigate("/home")}>
             <Logo /> <h3>Houzing</h3>
           </Section>
           <Section>
@@ -19,8 +19,8 @@ const Navbar = () => {
               </Link>
             ))}
           </Section>
-          <Section>
-            <button>login</button>
+          <Section right>
+            <Button>Login</Button>
           </Section>
         </Wrapper>
       </Main>
