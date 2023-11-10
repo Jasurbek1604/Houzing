@@ -124,15 +124,7 @@ const Filter = () => {
           </div>
         </Dropdown>
 
-        <Button
-          onClick={() => {
-            console.log(countryRef.current.value);
-            console.log(regionRef.current.value);
-            console.log(cityRef.current.value);
-            console.log(zipRef.current.value);
-          }}
-          type={"primary"}
-        >
+        <Button type={"primary"}>
           <Img src={search} /> Search
         </Button>
       </Main>
