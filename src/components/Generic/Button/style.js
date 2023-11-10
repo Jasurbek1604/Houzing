@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const getType = (type) => {
+const getType = ({ type }) => {
   switch (type) {
     case "dark":
       return {
@@ -17,9 +17,9 @@ const getType = (type) => {
     }
     case "light": {
       return {
-        background: "#0061df",
-        border: "none",
-        color: "#fff",
+        background: "#fff",
+        border: "1px solid #e6e9ec",
+        color: "#0d263b",
       };
     }
     default:
@@ -36,6 +36,13 @@ export const Container = styled.button`
   justify-content: center;
   align-items: center;
   height: ${({ height }) => (height ? `${height}px` : "44px")};
+  width: ${({ width }) => (width ? `${width}px` : "130px")};
+  font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : "14px")};
   border-radius: 2px;
-  ${getType("dark")}
+  ${getType}
+  min-width:120px;
+  cursor: pointer;
+  &:active {
+    opacity: 0.7;
+  }
 `;
