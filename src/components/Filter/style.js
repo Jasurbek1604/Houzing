@@ -13,7 +13,7 @@ export const Main = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
-  margin: 10px 0;
+  height: 60px;
 `;
 
 export const Img = styled.img`
