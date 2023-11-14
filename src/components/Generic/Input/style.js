@@ -18,6 +18,9 @@ export const Container = styled.input`
   border: 1px solid #e6e9ec;
   outline: none;
   padding-left: ${({ icon }) => (icon ? "40px" : "15px")};
+  &:focus {
+    border: 1px solid var(--backgroundPrimary);
+  }
 `;
 
 export const Img = styled.img`
