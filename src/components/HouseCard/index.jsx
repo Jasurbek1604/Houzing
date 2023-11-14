@@ -35,12 +35,12 @@ const HouseCard = ({ url, title, info, bed, bath, garage, ruler }) => {
         </Details>
       </Content>
       <Divider />
-      <Content footer>
-        <Details.Item footer>
+      <Content footer="true">
+        <Details.Item footer="true">
           <div className="info">$2,800/mo</div>
           <div className="subTitle">$7,500/mo</div>
         </Details.Item>
-        <Details.Item row>
+        <Details.Item row="true">
           <Icons.Resize src={resize1} />
           <Icons.Love src={love1} />
         </Details.Item>

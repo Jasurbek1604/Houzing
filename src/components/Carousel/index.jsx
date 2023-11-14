@@ -61,8 +61,8 @@ const CarouselComponent = () => {
         <Price>$5,250/mo</Price>
         <Button type="dark">Read more</Button>
       </Dark>
-      <Arrow data-name="left" onClick={onMove} left src={arrow} />
-      <Arrow data-name="right" onClick={onMove} right src={arrow} />
+      <Arrow data-name="left" onClick={onMove} left="true" src={arrow} />
+      <Arrow data-name="right" onClick={onMove} right="true" src={arrow} />
       <Carousel ref={slider}>
         <CarouselItem>
           <Img src={house1} />
