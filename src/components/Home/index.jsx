@@ -1,13 +1,13 @@
 import React from "react";
 import { Container } from "./style";
 import CarouselComponent from "../Carousel";
-import HouseCard from "../HouseCard";
+import Category from "../Category";
 
 const Home = () => {
   return (
     <Container>
       <CarouselComponent />
-      <HouseCard />
+      <Category />
     </Container>
   );
 };

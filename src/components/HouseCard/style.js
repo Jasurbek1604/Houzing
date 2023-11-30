@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 380px;
-  height: 430px;
-
+  width: 350px;
+  height: 400px;
   filter: drop-shadow(0px 20px 38px rgba(0, 0, 0, 0.06))
     drop-shadow(0px 7px 46px rgba(0, 0, 0, 0.06))
     drop-shadow(0px 8px 15px rgba(0, 0, 0, 0.06));
@@ -11,15 +10,14 @@ const Container = styled.div`
 
 const Img = styled.img`
   width: 100%;
-  max-height: 220px;
+  height: 180px;
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: ${({ footer }) => (footer ? "row" : "column")};
   justify-content: ${({ footer }) => footer && "space-between"};
-  padding-top: 24px;
-  padding: 16px 20px;
+  padding: 14px 20px;
   background: white;
 `;
 const Details = styled.div`

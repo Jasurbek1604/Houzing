@@ -8,37 +8,49 @@ import ruler1 from "../../assets/icons/ruler.svg";
 import love1 from "../../assets/icons/love.svg";
 import resize1 from "../../assets/icons/resize.svg";
 
-const HouseCard = ({ url, title, info, bed, bath, garage, ruler }) => {
+const HouseCard = ({ data }) => {
+  const {
+    attachments,
+    address,
+    city,
+    country,
+    houseDetails,
+    price,
+    salePrice,
+    description,
+  } = data;
   return (
     <Container>
-      <Img src={url || noimg} />
+      <Img src={attachments[0].imgPath || noimg} />
       <Content>
-        <div className="subTitle">{title || "New Apartment Nice Wiew"}</div>
-        <div className="info">{info || "Quincy St, Brooklyn, NY, USA"}</div>
+        <div className="subTitle">
+          {`${city} ${country} ${description}` || "New Apartment Nice Wiew"}
+        </div>
+        <div className="info">{address || "Quincy St, Brooklyn, NY, USA"}</div>
         <Details>
           <Details.Item>
             <Icons.Bed src={bed1} />
-            <div className="info">Bed {bed || 0}</div>
+            <div className="info">Bed {houseDetails?.bed || 0}</div>
           </Details.Item>
           <Details.Item>
             <Icons.Bath src={bath1} />
-            <div className="info">Bath {bath || 0}</div>
+            <div className="info">Bath {houseDetails?.bath || 0}</div>
           </Details.Item>
           <Details.Item>
             <Icons.Garage src={garage1} />
-            <div className="info">Garage {garage || 0} </div>
+            <div className="info">Garage {houseDetails?.garage || 0} </div>
           </Details.Item>
           <Details.Item>
             <Icons.Ruler src={ruler1} />
-            <div className="info">Ruler {ruler || 0}</div>
+            <div className="info">Ruler {houseDetails?.ruler || 0}</div>
           </Details.Item>
         </Details>
       </Content>
       <Divider />
       <Content footer="true">
         <Details.Item footer="true">
-          <div className="info">$2,800/mo</div>
-          <div className="subTitle">$7,500/mo</div>
+          <div className="info">{`$${price}/mo` || "$2,800/mo"}</div>
+          <div className="subTitle">{`$${salePrice}/mo` || "$7,500/mo"}</div>
         </Details.Item>
         <Details.Item row="true">
           <Icons.Resize src={resize1} />

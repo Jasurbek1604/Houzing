@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, Outlet } from "react-router-dom";
 import { navbar } from "../../utils/navbar";
-import { Container, Wrapper, Section, Logo, Link, Main } from "./style";
+import { Wrapper, Section, Logo, Link, Main } from "./style";
 import { Button } from "../Generic/";
 import logo from "../../assets/img/logo.png";
 import Filter from "../Filter";
@@ -9,7 +9,7 @@ import Filter from "../Filter";
 const Navbar = () => {
   const navigate = useNavigate();
   return (
-    <Container>
+    <>
       <Main>
         <Wrapper>
           <Section left="true" logo="true" onClick={() => navigate("/home")}>
@@ -34,7 +34,7 @@ const Navbar = () => {
       </Main>
       <Filter />
       <Outlet />
-    </Container>
+    </>
   );
 };
 

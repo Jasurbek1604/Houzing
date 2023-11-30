@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 export const Main = styled.div`
   padding: var(--padding);
   width: 100%;
@@ -14,6 +8,7 @@ export const Main = styled.div`
   align-items: center;
   gap: 15px;
   height: 60px;
+  margin: 0 auto;
 `;
 
 export const Img = styled.img`

@@ -1,13 +1,20 @@
 import React, { useState, useRef } from "react";
 import { Dropdown } from "antd";
-import { Container, Main, Img, Form, Label, Inputs } from "./style";
+import { Main, Img, Form, Label, Inputs } from "./style";
 import { Input, Button } from "../Generic/index";
 import setting from "../../assets/icons/setting.svg";
 import houses from "../../assets/icons/houses.svg";
 import search from "../../assets/icons/search.svg";
+import { useReplace } from "../../hooks/useReplace";
+import { useSearch } from "../../hooks/useSearch";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Filter = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const query = useSearch();
 
   const countryRef = useRef();
   const regionRef = useRef();
@@ -20,6 +27,10 @@ const Filter = () => {
 
   const minPriceRef = useRef();
   const maxPriceRef = useRef();
+
+  const onChange = ({ target: { name, value } }) => {
+    navigate(`${location.pathname}${useReplace(name, value)}`);
+  };
 
   const items = [
     {
@@ -34,6 +45,9 @@ const Filter = () => {
               placeholder={"Country"}
               width={180}
               height={44}
+              onChange={onChange}
+              defaultValue={query.get("country")}
+              name="country"
             />
             <Input
               ref={regionRef}
@@ -41,6 +55,9 @@ const Filter = () => {
               placeholder={"Region"}
               width={180}
               height={44}
+              onChange={onChange}
+              defaultValue={query.get("region")}
+              name="region"
             />
             <Input
               ref={cityRef}
@@ -48,12 +65,18 @@ const Filter = () => {
               placeholder={"City"}
               width={180}
               height={44}
+              onChange={onChange}
+              defaultValue={query.get("city")}
+              name="city"
             />
             <Input
               type="text"
               placeholder={"Zip code"}
               width={180}
               height={44}
+              onChange={onChange}
+              defaultValue={query.get("zip_code")}
+              name="zip_code"
               ref={zipRef}
             />
           </Inputs>
@@ -65,6 +88,9 @@ const Filter = () => {
               placeholder={"Rooms"}
               width={180}
               height={44}
+              onChange={onChange}
+              defaultValue={query.get("room")}
+              name="room"
             />
             <Input
               ref={sizeRef}
@@ -72,6 +98,9 @@ const Filter = () => {
               placeholder={"Size"}
               width={180}
               height={44}
+              onChange={onChange}
+              defaultValue={query.get("size")}
+              name="size"
             />
             <Input
               ref={sortRef}
@@ -79,6 +108,9 @@ const Filter = () => {
               placeholder={"Sort"}
               width={180}
               height={44}
+              onChange={onChange}
+              defaultValue={query.get("sort")}
+              name="sort"
             />
           </Inputs>
           <Label>Price</Label>
@@ -88,6 +120,9 @@ const Filter = () => {
               placeholder={"Min price"}
               width={180}
               height={44}
+              onChange={onChange}
+              defaultValue={query.get("min_price")}
+              name="min_price"
               ref={minPriceRef}
             />
             <Input
@@ -95,6 +130,9 @@ const Filter = () => {
               placeholder={"Max price"}
               width={180}
               height={44}
+              onChange={onChange}
+              defaultValue={query.get("max_price")}
+              name="max_price"
               ref={maxPriceRef}
             />
           </Inputs>
@@ -103,32 +141,30 @@ const Filter = () => {
     },
   ];
   return (
-    <Container>
-      <Main>
-        <Input
-          icon={houses}
-          placeholder={"Enter an address, neighborhood, city, or ZIP code"}
-        />
-        <Dropdown
-          menu={{
-            items,
-          }}
-          placement="bottomRight"
-          arrow={{ pointAtCenter: true }}
-          open={isOpen}
-        >
-          <div>
-            <Button onClick={() => setIsOpen(!isOpen)} type="light">
-              <Img src={setting} /> Advenced
-            </Button>
-          </div>
-        </Dropdown>
+    <Main>
+      <Input
+        icon={houses}
+        placeholder={"Enter an address, neighborhood, city, or ZIP code"}
+      />
+      <Dropdown
+        menu={{
+          items,
+        }}
+        placement="bottomRight"
+        arrow={{ pointAtCenter: true }}
+        open={isOpen}
+      >
+        <div>
+          <Button onClick={() => setIsOpen(!isOpen)} type="light">
+            <Img src={setting} /> Advenced
+          </Button>
+        </div>
+      </Dropdown>
 
-        <Button type={"primary"}>
-          <Img src={search} /> Search
-        </Button>
-      </Main>
-    </Container>
+      <Button type={"primary"}>
+        <Img src={search} /> Search
+      </Button>
+    </Main>
   );
 };
 
