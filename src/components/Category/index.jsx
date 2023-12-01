@@ -1,12 +1,13 @@
-import React, { useEffect, useId, useRef, useState } from "react";
+import React, { useEffect, useId, useState } from "react";
 import Slider from "react-slick";
 import CategoryCard from "../../components/CategoryCard";
 import { Container } from "./style";
+import { useNavigate } from "react-router-dom";
 
 const Category = () => {
   const [data, setData] = useState([]);
   const id = useId();
-
+  const navigate = useNavigate();
   const settings = {
     className: "center",
     centerMode: true,
@@ -29,7 +30,13 @@ const Category = () => {
     <Container>
       <Slider {...settings}>
         {data.map((value) => {
-          return <CategoryCard key={id} data={value} />;
+          return (
+            <CategoryCard
+              onClick={() => navigate(`/properties?category_id=${value.id}`)}
+              key={id}
+              data={value}
+            />
+          );
         })}
       </Slider>
     </Container>
